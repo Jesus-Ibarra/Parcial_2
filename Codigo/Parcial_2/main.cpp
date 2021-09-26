@@ -9,8 +9,8 @@ int main()
     int c=0,p,q,a,l,m,n,s,t;
     unsigned long long rojo,verde,azul;
     int AlturaInicial,AnchoInicial;
-    char band=true;
-    string filname = "../Parcial_2/Mapas/Colombia5x4.png"; //cargar la imagen
+    //char band=true,opcion=true;
+    string filname = "../Parcial_2/Mapas/Guayana4x5.png"; //cargar la imagen
                     //retrocede/ingresa a la carpeta/nombre de la imagen o /nombre de la carp. imagen/nom. imagen
     QImage im(filname.c_str());
 
@@ -186,10 +186,10 @@ int main()
 //***************************************************************************************************
 
 
-q=16/AlturaInicial;
+/*q=16/AlturaInicial;
 m=16/AnchoInicial;
 p=16%AlturaInicial;
-n=16%AnchoInicial;
+n=16%AnchoInicial;*/
 
 
    /* for(int indey=0;indey<AlturaInicial;indey+=1)
@@ -227,13 +227,19 @@ n=16%AnchoInicial;
     archivo.open(nombreArchivo.c_str(), fstream::out);
     archivo<<"{"<<endl;
     //q=16/AlturaInicial;
+    p=16%AlturaInicial;
+    //q=16/AlturaInicial;
 
     for(int indey=0;indey<AlturaInicial;indey+=1)
     {
+        //p=16%AlturaInicial;
+
         for(int clockY=0;clockY<16/AlturaInicial;clockY+=1)
         {
             //clockY=1;
             archivo<<"{"<<endl;
+            n=16%AnchoInicial;
+            //m=16/AnchoInicial;
             for(int index=0;index<AnchoInicial;index+=1)
             {
                 for(int clockX=0;clockX<16/AnchoInicial;clockX+=1)
@@ -243,35 +249,34 @@ n=16%AnchoInicial;
                     azul=im.pixelColor(index,indey).blue();
                     archivo <<"{"<<rojo<<","<<verde<<","<<azul<<"}";
                     c=c+1;
-                    if(c==q){//q=16/AlturaInicial
-                       // p=16%AlturaInicial;
-                        //c contador
-                        while(band){
+                    if(p!=0 && clockY>p){//q=16/AlturaInicial
+
+
                             clockY-=p;
+                        //im.copy(index,indey,AnchoInicial,AlturaInicial);
                             //indey=p;
                             //index=p;
-                            band=false;
-                        }
+                            p--;
+
+
 
                     }
-                    else if(c==m){//m=16/AnchoInicial
-                        //n=16%AnchoInicial;
-                        band=true;
-                        while(band){
-                            //index-=n;
-                            clockX-=n;//clockX+=n da lo mismo 15x16
-                            band=false;
-                        }
+                     if(n!=0 && clockX>n ){//m=16/AnchoInicial
+
+                            clockX-=n;
+                            n--;
+
+
                     }
-                    /*else if(c==q && c==m && clockY>p || clockX>n){
-                        //p=16%AlturaInicial;
-                        //n=16%AnchoInicial;
-                        band=true;
-                        while(band){
+                    /*else if(p!=0 && clockY>p && n!=0 && clockX>n && indey>p && index>n){
+
                             clockY-=p;
                             clockX-=n;
-                            band=false;
-                        }
+                            indey-=p;
+                            index-=n;
+                            p--;
+                            n--;
+
                     }*/
                     if(c%16!=0)
                     {
