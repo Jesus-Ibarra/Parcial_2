@@ -20,7 +20,7 @@ public:
 
 private:
     char ***RGB;
-    unsigned long long i,fil,col, rojo,verde,azul;
+    unsigned long long i,j,fil,col, rojo,verde,azul;
     QImage im;
 
 

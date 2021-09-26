@@ -138,3 +138,4 @@ void ImagenRead::guardar_matriz()
         // el dato de la funcion matriz se guardara en un archivo txt
 
 // si no abrio correctamente, indicarle al usuario que el archivo no pudo abrirse
+
