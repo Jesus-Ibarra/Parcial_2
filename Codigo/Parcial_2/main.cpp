@@ -10,7 +10,7 @@ int main()
     unsigned long long rojo,verde,azul;
     int AlturaInicial,AnchoInicial;
     char band=true;
-    string filname = "../Parcial_2/Mapas/Colombia4x4.png"; //cargar la imagen
+    string filname = "../Parcial_2/Mapas/Colombia5x4.png"; //cargar la imagen
                     //retrocede/ingresa a la carpeta/nombre de la imagen o /nombre de la carp. imagen/nom. imagen
     QImage im(filname.c_str());
 
@@ -243,8 +243,9 @@ n=16%AnchoInicial;
                     azul=im.pixelColor(index,indey).blue();
                     archivo <<"{"<<rojo<<","<<verde<<","<<azul<<"}";
                     c=c+1;
-                    if(c==q){
+                    if(c==q){//q=16/AlturaInicial
                        // p=16%AlturaInicial;
+                        //c contador
                         while(band){
                             clockY-=p;
                             //indey=p;
@@ -253,11 +254,12 @@ n=16%AnchoInicial;
                         }
 
                     }
-                    else if(c==m && clockX>n){
+                    else if(c==m){//m=16/AnchoInicial
                         //n=16%AnchoInicial;
                         band=true;
                         while(band){
-                            clockX-=n;
+                            //index-=n;
+                            clockX-=n;//clockX+=n da lo mismo 15x16
                             band=false;
                         }
                     }
