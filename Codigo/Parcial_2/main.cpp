@@ -276,21 +276,22 @@ n=16%AnchoInicial;*/
                         azul=im.pixelColor(index,indey).blue();
                         archivo <<"{"<<rojo<<","<<verde<<","<<azul<<"}";
                         c++;
-                        if(PixelesFaltantes!=0)
+                        if(PixelesFaltantes!=0 && PixelesFaltantes<=a)
                             {
                                 for(int i=1;i<=PixelesFaltantes;i++){
                                     clockX-=i;
                                     PixelesFaltantes--;
                                 }
                             }
-                        /*else if(PixelesFaltantes!=0 && PixelesFaltantes>a){
+                        else if(PixelesFaltantes!=0 && PixelesFaltantes>a){
                             //a=PixelesFaltantes-a;
-                            clockX=PixelesFaltantes-a;
+                            p=16/PixelesFaltantes;
+                            //clockX=PixelesFaltantes-a;
                             for(int i=1;i<=PixelesFaltantes;i++){
                                 clockX-=i;
-                                PixelesFaltantes--;
+                                PixelesFaltantes-=p;
                             }
-                        }*/
+                        }
                         if(c%16!=0)
                         {
                             archivo<<",";
@@ -315,10 +316,20 @@ n=16%AnchoInicial;*/
                         azul=im.pixelColor(index,indey).blue();
                         archivo <<"{"<<rojo<<","<<verde<<","<<azul<<"}";
                         c++;
-                        if(PixelesFaltantes!=0){
+                        if(PixelesFaltantes!=0 && PixelesFaltantes<=a)
+                            {
+                                for(int i=1;i<=PixelesFaltantes;i++){
+                                    clockX-=i;
+                                    PixelesFaltantes--;
+                                }
+                            }
+                        else if(PixelesFaltantes!=0 && PixelesFaltantes>a){
+                            //a=PixelesFaltantes-a;
+                            p=16/PixelesFaltantes;
+                            //clockX=PixelesFaltantes-a;
                             for(int i=1;i<=PixelesFaltantes;i++){
-                            clockX-=i;
-                            PixelesFaltantes--;
+                                clockX-=i;
+                                PixelesFaltantes-=p;
                             }
                         }
                         if(c%16!=0)
